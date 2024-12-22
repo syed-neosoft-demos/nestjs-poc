@@ -8,7 +8,11 @@ export class AuthController {
 
   @Post('/signup')
   signup(@Body() createUser: CreateUserDto) {
-    return this.authService.signup(createUser);
+    try {
+      return this.authService.signup(createUser);
+    } catch (error) {
+      console.log('error :>> ', error);
+    }
   }
 
   @Post('/login')
